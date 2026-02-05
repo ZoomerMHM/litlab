@@ -10,109 +10,36 @@
     <style>
         :root { --primary: #00f2ff; --secondary: #bc13fe; --bg: #050505; }
         body { background-color: var(--bg); color: white; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            transition: 0.4s ease; 
-        }
-        .glass-card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--primary);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.2); 
-        }
-        .neon-text { 
-            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); 
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.4s ease; }
+        .glass-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 0 25px rgba(0, 242, 255, 0.2); }
+        .neon-text { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
 
     <header class="py-12 text-center">
-        <h1 class="text-6xl font-black neon-text mb-4 uppercase tracking-tighter">LIT LAB</h1>
-        <p class="text-gray-400 tracking-widest uppercase text-xs">Decoding Science & Arts • Focus and Believe</p>
+        <h1 class="text-6xl font-black neon-text mb-2 uppercase tracking-tighter">LIT LAB</h1>
+        <p class="text-gray-400 tracking-widest uppercase text-[10px]">Focus and Believe • All Subject Resources</p>
+        
+        <div class="flex justify-center gap-4 mt-6">
+            <a href="https://www.youtube.com/channel/UC6RWhlpEeL-dF-OXZpvC0SQ" target="_blank" class="glass-card px-4 py-2 rounded-full text-xs font-bold text-red-500 border-red-500/30 hover:bg-red-500 hover:text-white transition">
+                <i class="fa-brands fa-youtube mr-2"></i> YouTube
+            </a>
+            <a href="https://facebook.com/ZoomersLitLab" target="_blank" class="glass-card px-4 py-2 rounded-full text-xs font-bold text-blue-500 border-blue-500/30 hover:bg-blue-500 hover:text-white transition">
+                <i class="fa-brands fa-facebook mr-2"></i> Facebook
+            </a>
+        </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6">
         
-        <h2 class="text-xl font-bold mb-6 flex items-center gap-3 text-sky-400 uppercase tracking-widest">
-            <span class="w-10 h-1 bg-sky-500 rounded-full"></span> Science (STEM)
-        </h2>
-        
-        <div class="subject-grid mb-12">
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-atom text-3xl text-sky-400 mb-4 group-hover:rotate-180 duration-700"></i>
-                <h3 class="font-bold">Physics</h3>
-                <a href="#" class="mt-3 block text-xs bg-sky-500/10 py-2 rounded-lg hover:bg-sky-500 hover:text-white transition">Open Vault</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-flask text-3xl text-pink-400 mb-4 group-hover:animate-bounce"></i>
-                <h3 class="font-bold">Chemistry</h3>
-                <a href="#" class="mt-3 block text-xs bg-pink-500/10 py-2 rounded-lg hover:bg-pink-500 hover:text-white transition">Open Vault</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-calculator text-3xl text-amber-400 mb-4 group-hover:scale-125 transition"></i>
-                <h3 class="font-bold">Math</h3>
-                <a href="#" class="mt-3 block text-xs bg-amber-500/10 py-2 rounded-lg hover:bg-amber-500 hover:text-white transition">Open Vault</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-dna text-3xl text-emerald-400 mb-4 group-hover:rotate-12 transition"></i>
-                <h3 class="font-bold">Biology</h3>
-                <a href="#" class="mt-3 block text-xs bg-emerald-500/10 py-2 rounded-lg hover:bg-emerald-500 hover:text-white transition">Open Vault</a>
-            </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-atom text-sky-400 mb-2"></i><h3 class="text-xs font-bold">Physics</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-flask text-pink-400 mb-2"></i><h3 class="text-xs font-bold">Chemistry</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-calculator text-amber-400 mb-2"></i><h3 class="text-xs font-bold">Math</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-dna text-emerald-400 mb-2"></i><h3 class="text-xs font-bold">Biology</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-pen-nib text-blue-400 mb-2"></i><h3 class="text-xs font-bold">Bangla</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-language text-indigo-400 mb-2"></i><h3 class="text-xs font-bold">English</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center"><i class="fa-solid fa-code text-teal-400 mb-2"></i><h3 class="text-xs font-bold">ICT</h3></div>
+            <div class="glass-card p-6 rounded-2xl text-center bg-white/10"><i class="fa-solid fa-folder-plus text-white mb-2"></i><h3 class="text-xs font-bold">More</h3></div>
         </div>
-
-        <h2 class="text-xl font-bold mb-6 flex items-center gap-3 text-purple-400 uppercase tracking-widest">
-            <span class="w-10 h-1 bg-purple-500 rounded-full"></span> General Core
-        </h2>
-
-        <div class="subject-grid mb-16">
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-pen-nib text-3xl text-blue-400 mb-4"></i>
-                <h3 class="font-bold">Bangla</h3>
-                <a href="#" class="mt-3 block text-xs bg-blue-500/10 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition">Open Vault</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-language text-3xl text-indigo-400 mb-4"></i>
-                <h3 class="font-bold">English</h3>
-                <a href="#" class="mt-3 block text-xs bg-indigo-500/10 py-2 rounded-lg hover:bg-indigo-500 hover:text-white transition">Open Vault</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl text-center group cursor-pointer">
-                <i class="fa-solid fa-code text-3xl text-teal-400 mb-4"></i>
-                <h3 class="font-bold">ICT</h3>
-                <a href="#" class="mt-3 block text-xs bg-teal-500/10 py-2 rounded-lg hover:bg-teal-500 hover:text-white transition">Open Vault</a>
-            </div>
-        </div>
-
-        <h2 class="text-xl font-bold mb-6 flex items-center gap-3 text-secondary uppercase tracking-widest">
-            <span class="w-10 h-1 bg-secondary rounded-full"></span> New Delivery
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-12">
-            <div class="glass-card p-4 rounded-xl flex items-center justify-between border-l-4 border-primary">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-rocket text-primary"></i>
-                    <h4 class="text-sm font-semibold text-gray-200">Escape Velocity Masterclass</h4>
-                </div>
-                <a href="#" class="text-xs font-bold text-primary hover:underline">DOWNLOAD</a>
-            </div>
-            <div class="glass-card p-4 rounded-xl flex items-center justify-between border-l-4 border-secondary">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-wand-magic-sparkles text-secondary"></i>
-                    <h4 class="text-sm font-semibold text-gray-200">Square Magic Trick PDF</h4>
-                </div>
-                <a href="#" class="text-xs font-bold text-secondary hover:underline">DOWNLOAD</a>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="py-10 text-center border-t border-white/5 mt-5">
-        <p class="text-gray-600 text-[10px] uppercase tracking-widest">&copy; 2026 Zoomer's Lit Lab • Science and Logic</p>
-    </footer>
-
-</body>
-</html>
