@@ -3,123 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoomer's Lit Lab</title>
+    <title>Zoomer's Lit Lab | The Future of STEM</title>
     <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #bc13fe;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- MATRIX BACKGROUND EFFECT --- */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #050505 100%);
+        }
+
+        nav {
+            padding: 20px 10%;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0a 100%);
-            min-height: 100vh;
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass);
         }
 
-        header {
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            background: linear-gradient(90deg, #00f2ff, #bc13fe);
+        .logo {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
+            letter-spacing: 3px;
         }
 
-        /* Buttons Container */
-        .button-group {
-            margin-top: 40px;
+        .hero {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); }
+            to { text-shadow: 0 0 20px var(--secondary), 0 0 40px var(--secondary); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        .btn-container {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .cta-button {
+        .btn {
             padding: 15px 35px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 50px;
-            transition: 0.4s;
             text-transform: uppercase;
+            transition: 0.4s;
+            border: 2px solid transparent;
             font-size: 0.9rem;
         }
 
-        /* YouTube Style */
-        .yt-btn {
-            border: 2px solid #ff0000;
+        .btn-yt {
+            border-color: #ff0000;
             color: #ff0000;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
         }
-        .yt-btn:hover {
+
+        .btn-yt:hover {
             background: #ff0000;
-            color: #fff;
+            color: white;
             box-shadow: 0 0 30px #ff0000;
         }
 
-        /* Facebook Style */
-        .fb-btn {
-            border: 2px solid #00f2ff;
-            color: #00f2ff;
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
-        }
-        .fb-btn:hover {
-            background: #00f2ff;
-            color: #000;
-            box-shadow: 0 0 30px #00f2ff;
+        .btn-fb {
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
-        .grid {
+        .btn-fb:hover {
+            background: var(--primary);
+            color: black;
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        .subjects {
+            padding: 80px 10%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            width: 80%;
-            margin-top: 60px;
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 20px;
+            padding: 40px;
+            border-radius: 25px;
             text-align: center;
-            transition: 0.3s;
+            transition: 0.5s;
+            backdrop-filter: blur(10px);
         }
 
         .card:hover {
-            border-color: #bc13fe;
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(188, 19, 254, 0.2);
+            transform: translateY(-15px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 35px rgba(188, 19, 254, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 80px 10%;
+            background: rgba(255,255,255,0.02);
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .stat-item h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--glass);
+            color: #555;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>ZOOMER'S LIT LAB</h1>
-        <p style="color: #888;">No Cap, Just Logic. Master STEM with Smart Hacks.</p>
-        
-        <div class="button-group">
-            <a href="https://www.youtube.com/channel/UC6RWhlpEeL-dF-OXZpvC0SQ" target="_blank" class="cta-button yt-btn">YouTube Channel</a>
-            
-            <a href="https://www.facebook.com/YOUR_PAGE_LINK_HERE" target="_blank" class="cta-button fb-btn">Facebook Page</a>
-        </div>
-    </header>
+    <div class="bg-canvas"></div>
 
-    <div class="grid">
-        <div class="card"><h3>⚛️ Physics</h3></div>
-        <div class="card"><h3>📐 Math</h3></div>
-        <div class="card"><h3>🧪 Chemistry</h3></div>
-        <div class="card"><h3>🧬 Biology</h3></div>
-    </div>
+    <nav>
+        <div class="logo">LIT LAB</div>
+        <div>
+            <span style="font-size: 0.8rem; color: var(--primary); border: 1px solid var(--primary); padding: 5px 12px; border-radius: 20px;">v2.0 LIVE</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>ZOOMER'S <br><span style="color: var(--primary)">LIT LAB</span></h1>
+        <p>HSC STEM-এর কঠিন সব টপিক এখন পানির মতো সহজ হবে। আমরা মুখস্থ করি না, আমরা লজিক দিয়ে ক্র্যাক করি।</p>
+        <div class="btn-container">
+            <a href="https://www.youtube.com/channel/UC6RWhlpEeL-dF-OXZpvC0SQ" target="_blank" class="btn btn-yt">YouTube Channel</a>
+            
+            <a href="Https://www.facebook.com/share/16GqKCSkxu/" target="_blank" class="btn btn-fb">Facebook Page</a>
+        </div>
+    </section>
+
+    <section class="subjects">
+        <div class="card">
+            <h3>⚛️ Physics</h3>
+            <p>ভেক্টর থেকে নিউটনিয়ান মেকানিক্স—সবকিছুর ভিজ্যুয়াল হ্যাকস আর ক্যালকুলেটর ট্রিক্স শিখবে এখানে।</p>
+        </div>
+        <div class="card">
+            <h3>📐 Math</h3>
+            <p>ক্যালকুলাস আর জ্যামিতির জটিল সব প্রমাণকে আমরা ছোট ছোট লজিক্যাল গেমের মতো সলভ করব।</p>
+        </div>
+        <div class="card">
+            <h3>🧪 Chemistry</h3>
+            <p>অর্গানিক রিঅ্যাকশন মনে রাখার শর্টকাট আর কনসেপ্ট ক্লিয়ার করার সব Lit পদ্ধতি।</p>
+        </div>
+        <div class="card">
+            <h3>🧬 Biology</h3>
+            <p>মেডিকেল স্টাইল নেমোনিক্স আর এনিমেশনের মাধ্যমে জীববিজ্ঞানের কঠিন চ্যাপ্টারগুলো হবে সহজ।</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item"><h2>100%</h2><p>Free Resources</p></div>
+        <div class="stat-item"><h2>Easy</h2><p>Logic Hacks</p></div>
+        <div class="stat-item"><h2>Lit</h2><p>STEM Vibes</p></div>
+    </section>
+
+    <footer>
+        &copy; 2026 Zoomer's Lit Lab | Built for the Future Geniuses.
+    </footer>
 
 </body>
 </html>
